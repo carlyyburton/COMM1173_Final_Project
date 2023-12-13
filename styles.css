@@ -1,0 +1,268 @@
+/* 
+#264653
+#2A9D8F
+#E9C46A
+#F4A261
+#E76F51
+ */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: #000;
+}
+
+body{
+    font-family: Verdana, sans-serif;
+    background-color: #FFF;
+}
+
+main{
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    margin: 70px auto 20px;
+}
+
+#sneaky{
+    background-color: #2A9D8F;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: auto;
+    width: 100%;
+    height: 65%;
+}
+
+a{
+    text-decoration: none;
+    color: #FFF;
+    transition: 1;
+}
+
+main #intro h2,
+main #intro p,
+#buttons button{
+    color: #FFF;
+}
+
+main #intro{
+    display: flex;
+    justify-content: space-between;
+}
+
+main #intro div,
+main #intro img{
+    width: 50%;
+}
+
+#buttons{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    gap: 40px;
+}
+
+#buttons button{
+    position: relative;
+    z-index: 3;
+    background-color: #264653;
+    min-width: 150px;
+    min-height: 150px;
+    aspect-ratio: 1/1;
+    padding: 0px;
+    border: none;
+    border-radius: 15px;
+    font-size: 25px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+#buttons button::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: #E76F51;
+    width: 0%;
+    height: 100%;
+    border-radius: 50% 0 0 50%;
+    transition: 0.5s;
+}
+
+#buttons button:hover::before{
+    width: 180%;
+}
+
+#buttons button:hover{
+    transform: scale(1.1);
+}
+
+/* Hamburger animation */
+
+.sidebar_wrapper input{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 5;
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+}
+
+.sidebar_wrapper input[type="checkbox"]:checked ~ nav{
+    transform: translateX(0);
+}
+
+.sidebar_wrapper input[type="checkbox"]:checked ~ #hamburger_button .line1{
+    transform: rotate(45deg);
+}
+
+.sidebar_wrapper input[type="checkbox"]:checked ~ #hamburger_button .line2{
+    transform: scale(0);
+}
+
+.sidebar_wrapper input[type="checkbox"]:checked ~ #hamburger_button .line3{
+    transform: rotate(-45deg);
+}
+
+/* Lines for button */
+.sidebar_wrapper #hamburger_button{
+    display: block;
+    height: 26px;
+    width: 32px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar_wrapper #hamburger_button .line{
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: #E9C46A;
+}
+
+.sidebar_wrapper #hamburger_button .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+}
+
+.sidebar_wrapper #hamburger_button .line2 {
+    transition: transform 0.2s ease-in-out;
+}
+
+.sidebar_wrapper #hamburger_button .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* inside nav */
+nav{
+    background-color: #264653;
+    color: #E9C46A;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    z-index: 3;
+    transform: translate(100%);
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+nav ul{
+    height: 90%;
+    margin: 35px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+
+}
+
+nav ul li{
+    font-size: 30px;
+    height: 40px;
+}
+
+nav ul li a{
+    position: relative;
+    padding: 10px;
+}
+
+nav ul li a::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #E9C46A;
+    height: 2px;
+    width: 0;
+    transition: 0.2s;
+}
+
+nav ul li a:hover::before{
+    width: 100%;
+}
+
+/* Information Pages Styles */
+main:not([id="no"]){
+    background-color: #FFF;
+    color: #000;
+    padding: 70px;
+    border-radius: 30px;
+    box-shadow: 0 0 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+main:not([id="no"]) h2{
+    margin-bottom: 50px;
+}
+
+main:not([id="no"]) h4,
+main:not([id="no"]) ul{
+    margin-bottom: 20px;
+}
+
+main:not([id="no"]) p{
+    line-height: 1.8;
+}
+
+main:not([id="no"]) li{
+    list-style: none;
+    padding-left: 30px;
+}
+
+main:not([id="no"]) img{
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+main:not([id="no"]) .very_tall{
+    max-height: 500px;
+}
+
+/* Different widths for the main page buttons */
+@media (min-width:600px) and (max-width: 800px){
+    #buttons{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px){
+    #buttons{
+        grid-template-columns: 1fr 1fr;
+    }
+}
